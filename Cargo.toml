@@ -30,7 +30,7 @@ rcgen = "0.11"
 reqwest = { version = "0.11.14", default-features = false, features = ["json", "stream", "multipart"] }
 rust-embed = { version = "8", features = ["compression", "debug-embed"] }
 schemars = "0.8"
-sea-orm = { version = "0.12", features = ["macros", "sqlx-postgres", "runtime-tokio-rustls", "tests-cfg", "mock"] }
+sea-orm = { version = "0.12", features = ["macros", "sqlx-postgres", "runtime-tokio-rustls"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 snafu = { version = "0.7", features = ["backtraces"] }
@@ -39,3 +39,10 @@ tokio-rustls = "0.24"
 tower = "0.4"
 tower-service = "0.3.2"
 tracing = "0.1"
+
+[features]
+mock = ["sea-orm/mock", "sea-orm/tests-cfg"]
+
+[[test]]
+name = "mock"
+required-features = ["mock"]
